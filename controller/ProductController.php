@@ -121,10 +121,10 @@ class ProductController
         try {
             $prodDAO = new ProductDAO();
             $v = new Validator($data);
-            $v->rule('required', ['name', 'description', 'price', 'category']);
+            $v->rule('required', ['id','name', 'description', 'price', 'category']);
             if ($v->validate()) {
                 $product = new Product();
-
+                $product->setId($data['id']);
                 $product->setName($data['name']);
                 $product->setDescription($data['description']);
                 $product->setImage($data['image']);
